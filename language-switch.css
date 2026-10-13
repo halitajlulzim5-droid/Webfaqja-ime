@@ -1,0 +1,36 @@
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.language-switch button {
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.language-switch button[aria-pressed="true"] {
+  background: var(--deep);
+  color: var(--white);
+}
+
+.language-switch button:focus-visible {
+  outline: 3px solid var(--olive);
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .language-switch {
+    align-self: flex-end;
+  }
+}

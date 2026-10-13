@@ -1,0 +1,330 @@
+.residential-simulation {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(310px, 0.8fr);
+  min-height: 430px;
+  overflow: hidden;
+  border: 1px solid #263540;
+  border-radius: 14px;
+  background: #080d12;
+  color: #e7edf0;
+  box-shadow: 0 18px 45px #0b182014;
+}
+
+.residential-scene {
+  position: relative;
+  height: auto;
+  min-height: 430px;
+  padding: 0;
+  overflow: hidden;
+  background: #0b131c;
+}
+
+.residential-scene::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #b7d7e210;
+  content: "";
+  pointer-events: none;
+}
+
+.residential-scene-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+}
+
+.scene-chip {
+  position: absolute;
+  z-index: 1;
+  top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 0 11px;
+  border: 1px solid #a2b8c12a;
+  border-radius: 5px;
+  background: #081017d9;
+  color: #c9d5da;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+}
+
+.scene-chip-building {
+  left: 18px;
+}
+
+.scene-chip-live {
+  right: 18px;
+  color: #c5e0ce;
+}
+
+.scene-chip-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #80c98b;
+  box-shadow: 0 0 9px #80c98b77;
+}
+
+.scene-caption,
+.transformer-label,
+.scene-floor-caption {
+  fill: #eff2e7;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.building-title {
+  fill: #334b43;
+  font-size: 9px;
+}
+
+.scene-caption {
+  fill: #d6dfd3;
+  font-size: 9px;
+}
+
+.scene-floor-caption {
+  fill: #e4e9de;
+  font-size: 7px;
+}
+
+.floor-number {
+  fill: #6d8584;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-size: 7px;
+  font-weight: 800;
+  text-anchor: end;
+}
+
+.apartment-window {
+  fill: #30424a;
+  stroke: #a7c0bb;
+  stroke-width: 1;
+  cursor: pointer;
+  transition: fill 180ms ease, filter 180ms ease;
+}
+
+.apartment-window:hover,
+.apartment-window:focus {
+  stroke: #dffaff;
+  stroke-width: 2;
+  outline: none;
+}
+
+.apartment-window.is-lit {
+  fill: #ffd782;
+  stroke: #fff0bb;
+  filter: drop-shadow(0 0 6px #ffd782bb);
+}
+
+.power-cable {
+  opacity: 0.25;
+}
+
+.is-energized .power-cable {
+  opacity: 1;
+  animation: power-flow 1.2s linear infinite;
+}
+
+.source-cable {
+  opacity: 0.25;
+}
+
+.is-energized .source-cable {
+  opacity: 1;
+  animation: power-flow 1.2s linear infinite;
+}
+
+.source-label {
+  fill: #eff2e7;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.transformer-status-light {
+  fill: #758578;
+}
+
+.is-energized .transformer-status-light,
+.is-energized .source-status-light {
+  fill: #79e3ab;
+  filter: drop-shadow(0 0 5px #79e3ab);
+}
+
+.project-info .building-sim-readouts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin: 18px 0 16px;
+  color: #a9bac1;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 10px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.project-info .building-sim-readouts span {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-height: 57px;
+  padding: 10px 11px;
+  border: 1px solid #9bb0bc1f;
+  border-radius: 5px;
+  background: #ffffff05;
+}
+
+.project-info .building-sim-readouts small {
+  color: #8ea2ab;
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+.project-info .building-sim-readouts strong {
+  color: #edf5f5;
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.building-sim-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.building-sim-controls button {
+  flex: 1 1 125px;
+  min-height: 42px;
+  padding: 9px 12px;
+  border: 1px solid #40545d;
+  border-radius: 5px;
+  background: #111c23;
+  color: #e4edf0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.building-sim-controls button:hover {
+  border-color: #78bbc5;
+  background: #172a31;
+}
+
+.building-sim-controls button:focus-visible {
+  outline: 3px solid #6bc8d0;
+  outline-offset: 2px;
+}
+
+.building-sim-controls .transformer-toggle {
+  border-color: #82694c;
+  color: #f0d4a5;
+}
+
+.project-info .building-sim-note {
+  display: block;
+  margin-top: 15px;
+  color: #82939c;
+  font-size: 9px;
+  line-height: 1.65;
+}
+
+.building-dashboard-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 24px;
+  color: #73c8d0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 1px;
+}
+
+.building-dashboard-kicker .model-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #9bb7a2;
+  font-size: 8px;
+}
+
+.residential-simulation .project-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 27px;
+  background: #0b1117;
+}
+
+.residential-simulation .project-info > span:not(.building-light-count):not(.building-power-readout):not(.simulated-generation-readout):not(.transformer-output-readout) {
+  color: #8e9ba3;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.residential-simulation .project-info h3 {
+  margin: 9px 0 7px;
+  color: #f0f4f5;
+  font-size: clamp(23px, 2.2vw, 31px);
+  letter-spacing: -0.8px;
+}
+
+.residential-simulation .project-info > p {
+  margin-bottom: 0;
+  color: #a6b4ba;
+  font-size: 12px;
+}
+
+@keyframes power-flow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+@media (max-width: 900px) {
+  .residential-simulation {
+    grid-template-columns: 1fr;
+  }
+
+  .residential-scene {
+    min-height: 0;
+    aspect-ratio: 560 / 370;
+    margin: 0;
+  }
+
+  .residential-scene-svg {
+    min-height: 0;
+  }
+
+  .residential-simulation .project-info {
+    padding: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apartment-window {
+    transition: none;
+  }
+
+  .is-energized .power-cable,
+  .is-energized .source-cable {
+    animation: none;
+  }
+}
