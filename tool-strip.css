@@ -1,0 +1,123 @@
+.tool-strip {
+  overflow: hidden;
+  padding: 22px 0 25px;
+  border-bottom: 1px solid #aebcc11c;
+  background: #0b1117;
+  color: #eef3f4;
+}
+
+.tool-strip-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto 15px;
+  color: #80939c;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.tool-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.tool-track,
+.tool-set,
+.tool-item {
+  display: flex;
+  align-items: center;
+}
+
+.tool-track {
+  width: max-content;
+  animation: tool-strip-scroll 34s linear infinite;
+}
+
+.tool-marquee:hover .tool-track,
+.tool-marquee:focus-within .tool-track {
+  animation-play-state: paused;
+}
+
+.tool-set {
+  flex: 0 0 auto;
+  gap: clamp(27px, 5vw, 70px);
+  padding-right: clamp(27px, 5vw, 70px);
+}
+
+.tool-item {
+  gap: 11px;
+  color: #e2e9ea;
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+
+.tool-mark {
+  display: grid;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  border: 1px solid #a8bbc025;
+  border-radius: 5px;
+  background: #ffffff08;
+  color: var(--tool-accent);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.mark-autocad {
+  --tool-accent: #f07868;
+}
+
+.mark-etap {
+  --tool-accent: #f0ca77;
+}
+
+.mark-revit {
+  --tool-accent: #83abe7;
+}
+
+.mark-dialux {
+  --tool-accent: #a6d47b;
+}
+
+@keyframes tool-strip-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 600px) {
+  .tool-strip {
+    padding: 19px 0 21px;
+  }
+
+  .tool-strip-heading {
+    width: calc(100% - 32px);
+    font-size: 8px;
+    letter-spacing: 0.8px;
+  }
+
+  .tool-strip-heading span:last-child {
+    text-align: right;
+  }
+
+  .tool-item {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-track {
+    animation: none;
+  }
+
+  .tool-set[aria-hidden="true"] {
+    display: none;
+  }
+}
